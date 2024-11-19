@@ -48,6 +48,10 @@ export default defineNuxtConfig({
         },
         // 插件配置
         plugins: [],
+        esbuild: {
+            drop: ['console', 'debugger'], //打包去除(开发环境的js文件的log也会去除)
+            // exclude: ['.env*'],
+        },
     },
     // vue配置，如开启实验性功能等
     vue: {},
