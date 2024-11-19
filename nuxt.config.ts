@@ -63,11 +63,35 @@ export default defineNuxtConfig({
         layoutTransition: { name: 'layout', mode: 'out-in' },
         // 可以自定义整个应用的头部。
         // 该方法不允许你提供响应式数据。
+        // head: {
+        //     //  可以简单配置seo
+        //     title: 'cherish app',
+        //     bodyAttrs: { style: 'height: 100%; margin:0; padding: 0;' },
+        //     meta: [{ name: 'description', content: 'cherish的神奇网站。' }],
+        // },
         head: {
-            //  可以简单配置seo
-            title: 'cherish app',
+            titleTemplate: '%s | MBTI 性格测试与MBTI分类介绍',
             bodyAttrs: { style: 'height: 100%; margin:0; padding: 0;' },
-            meta: [{ name: 'description', content: 'cherish的神奇网站。' }],
+            meta: [
+                { name: 'description', content: 'MBTI 性格测试与分析，帮助你了解自己，探索 AI 应用如何辅助个性分析与工作表现提升。MBTI分类介绍' },
+                { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+                { name: 'robots', content: 'index, follow' }, // 确保搜索引擎可以抓取页面
+                { name: 'keywords', content: 'MBTI, 人格测试, 性格分析, AI 应用, 人工智能, MBTI分类介绍, MBTI分类' }, // 相关关键词
+                { name: 'author', content: 'cherish' }, // 作者名
+                { name: 'og:title', content: 'MBTI 性格测试与 MBTI分类' }, // Open Graph 标题
+                { name: 'og:description', content: '了解你的 MBTI 性格类型并探索 AI 如何帮助你提升工作效率与个人成长。' }, // Open Graph 描述
+                // { name: 'og:image', content: 'https://example.com/path/to/image.jpg' }, // Open Graph 图片
+                // { name: 'og:url', content: 'https://example.com/mbti-ai' }, // Open Graph URL
+                { name: 'og:type', content: 'website' }, // Open Graph 类型
+                { name: 'twitter:card', content: 'summary_large_image' }, // Twitter 卡片类型
+                { name: 'twitter:title', content: 'MBTI 性格测试与 AI 应用' }, // Twitter 标题
+                { name: 'twitter:description', content: '探索 MBTI 性格测试和 AI 的结合，提升个性分析与工作效率。' }, // Twitter 描述
+                { name: 'twitter:image', content: 'https://example.com/path/to/image.jpg' }, // Twitter 图片
+            ],
+            link: [
+                { rel: 'icon', href: '/favicon.ico' },
+                { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap' },
+            ],
         },
     },
     // 全局css配置
