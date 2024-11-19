@@ -41,7 +41,7 @@
                 </div>
                 <!-- button -->
                 <div class="flex">
-                    <button class="rounded-md bg-gray-100 bg-op-50 border-none px p0 grid place-content-center" @click="handleIconClick('back')">
+                    <button class="rounded-md bg-gray-100 bg-op-50 border-none px p0 grid place-content-center" @click="handleIconClick('prev')">
                         <Icon name="line-md:chevron-left" :style="{ color: mbtiData?.mainColor }" size="20" class="w-6 h-6" />
                     </button>
                     <div class="px-4px"></div>
@@ -110,25 +110,24 @@
         { watch: [mbtiId] },
     )
     console.log('mbtiData', mbtiData.value)
-    const handleNextPage = async () => {
+    const handlePageChange = async (direction: string) => {
         console.log('ss')
-        if (mbtiId.value == '1') {
-            mbtiId.value = '2'
-        } else {
-            mbtiId.value = '1'
+        const currentValue = parseInt(mbtiId.value)
+        let nextPageValue: any
+        if (direction === 'next') {
+            nextPageValue = currentValue === 4 ? 1 : currentValue + 1
+        } else if (direction === 'prev') {
+            nextPageValue = currentValue === 1 ? 4 : currentValue - 1
         }
-        return
-        console.log('mbtiId', mbtiId.value)
-        // console.log('refreshMbtiData')
-        // navigateTo('/mbti/2')
+        mbtiId.value = nextPageValue.toString()
     }
     // 动态样式
     const dynamicClass = computed(() => {
         return mbtiId.value == '1' ? 'animate__fadeInRight' : 'animate__fadeInRight'
     })
-    async function handleIconClick(arrow: string) {
-        await handleNextPage()
-        triggerAnimation(arrow)
+    async function handleIconClick(direction: string) {
+        await handlePageChange(direction)
+        triggerAnimation(direction)
     }
     const show = ref(false)
     const colorMode = useColorMode()

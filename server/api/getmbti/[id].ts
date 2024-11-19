@@ -2,11 +2,7 @@ export default defineEventHandler(async (event) => {
     console.log('sbsbsb')
     const mbtiId = getRouterParam(event, 'id')
     console.log('apimbtiId', mbtiId)
-    if (mbtiId == '1') {
-        return analysts
-    } else if (mbtiId == '2') {
-        return diplomats
-    }
+    if (mbtiId) return mbtiInfoMap[mbtiId]
 })
 
 const typeInfoList: TypeInfo[] = [
@@ -186,28 +182,28 @@ const sentinels: MBTI = {
             name: '物流师',
             desc: '务实且注重事实的人，可靠性无可怀疑。',
             type: 'ISTJ-A / ISTJ-T',
-            img: 'path-to-logistician-image',
+            img: 'istj-logistician',
         },
         {
             id: 2,
             name: '守卫者',
             desc: '非常专注和热情的保护者，总是随时准备保护他们所爱的人。',
             type: 'ISFJ-A / ISFJ-T',
-            img: 'path-to-defender-image',
+            img: 'isfj-defender',
         },
         {
             id: 3,
             name: '总经理',
             desc: '出色的管理者，在管理事物或人的方面无与伦比。',
             type: 'ESTJ-A / ESTJ-T',
-            img: 'path-to-executive-image',
+            img: 'estj-executive',
         },
         {
             id: 4,
             name: '执政官',
             desc: '非常关心他人，善于社交，受人欢迎，总是乐于助人。',
             type: 'ESFJ-A / ESFJ-T',
-            img: 'path-to-consul-image',
+            img: 'esfj-consul',
         },
     ],
 }
@@ -225,28 +221,34 @@ const explorers: MBTI = {
             name: '鉴赏家',
             desc: '大胆而实际的实验家，擅长使用各种形式的工具。',
             type: 'ISTP-A / ISTP-T',
-            img: 'path-to-virtuoso-image',
+            img: 'istp-virtuoso',
         },
         {
             id: 2,
             name: '探险家',
             desc: '灵活有魅力的艺术家，时刻准备着探索和体验新鲜事物。',
             type: 'ISFP-A / ISFP-T',
-            img: 'path-to-adventurer-image',
+            img: 'isfp-adventurer',
         },
         {
             id: 3,
             name: '企业家',
             desc: '聪明，充满活力且洞察力极强的人，真正喜欢充满刺激和危险的生活。',
             type: 'ESTP-A / ESTP-T',
-            img: 'path-to-entrepreneur-image',
+            img: 'estp-entrepreneur',
         },
         {
             id: 4,
             name: '表演者',
             desc: '精力充沛、热情，总是心血来潮-有他们在身边，生活永远不会无聊。',
             type: 'ESFP-A / ESFP-T',
-            img: 'path-to-entertainer-image',
+            img: 'esfp-entertainer',
         },
     ],
+}
+const mbtiInfoMap: Record<string, MBTI> = {
+    '1': analysts,
+    '2': diplomats,
+    '3': sentinels,
+    '4': explorers,
 }
