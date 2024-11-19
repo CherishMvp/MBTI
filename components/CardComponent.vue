@@ -61,6 +61,9 @@
     const isExpanded = ref(false)
     const handlePageContent = () => {
         console.log('handlePageContent==前往详情页')
+        const { proxy } = useScriptGoogleAnalytics()
+        proxy.gtag('event', 'page_view')
+        return
         navigateTo(`/blog/forth-post`)
     }
 </script>
