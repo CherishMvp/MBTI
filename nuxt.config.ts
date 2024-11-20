@@ -120,7 +120,7 @@ export default defineNuxtConfig({
     modules: ['@unocss/nuxt', '@nuxtjs/color-mode', '@nuxt/content', '@nuxt/icon', '@nuxt/image', '@morev/vue-transitions/nuxt', 'nuxt-gtag'],
     gtag: {
         id: '',
-        enable: true,
+        enable: process.env.NODE_ENV === 'production',
     },
     // 配置自动导入规则
     imports: {
