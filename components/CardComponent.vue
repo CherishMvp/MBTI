@@ -65,7 +65,7 @@
         // SSR-ready
         gtag('event', 'screen_view', {
             app_name: 'My App',
-            screen_name: 'Home',
+            screen_name: 'cardcomponent click',
         })
         return
         navigateTo(`/blog/forth-post`)
