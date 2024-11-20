@@ -8,11 +8,6 @@ export default defineNuxtConfig({
     $development: {
         ssr: false,
     },
-    scripts: {
-        registry: {
-            googleAnalytics: true,
-        },
-    },
     $production: {},
 
     // 控制环境变量和私有令牌。运行时配置，可以在页面通过useRuntimeConfig()使用
@@ -22,11 +17,6 @@ export default defineNuxtConfig({
         // public中的键也可以在客户端使用
         public: {
             apiBase: '/api',
-            scripts: {
-                googleAnalytics: {
-                    id: '', // config in env
-                },
-            },
         },
     },
 
@@ -127,8 +117,11 @@ export default defineNuxtConfig({
         },
     },
     // 模块支持
-    modules: ['@unocss/nuxt', '@nuxtjs/color-mode', '@nuxt/content', '@nuxt/icon', '@nuxt/image', '@morev/vue-transitions/nuxt', '@nuxt/scripts'],
-
+    modules: ['@unocss/nuxt', '@nuxtjs/color-mode', '@nuxt/content', '@nuxt/icon', '@nuxt/image', '@morev/vue-transitions/nuxt', 'nuxt-gtag'],
+    gtag: {
+        id: '',
+        enable: true,
+    },
     // 配置自动导入规则
     imports: {
         dirs: ['./types/**', './components/**', './composables/**'],

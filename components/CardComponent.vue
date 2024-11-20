@@ -61,8 +61,12 @@
     const isExpanded = ref(false)
     const handlePageContent = () => {
         console.log('handlePageContent==前往详情页')
-        const { proxy } = useScriptGoogleAnalytics()
-        proxy.gtag('event', 'page_view')
+        const { gtag } = useGtag()
+        // SSR-ready
+        gtag('event', 'screen_view', {
+            app_name: 'My App',
+            screen_name: 'Home',
+        })
         return
         navigateTo(`/blog/forth-post`)
     }
